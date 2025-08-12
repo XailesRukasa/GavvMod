@@ -1,6 +1,13 @@
 package net.evoltmael.kamenridergavvmod;
 
 import com.mojang.logging.LogUtils;
+import net.evoltmael.kamenridergavvmod.entity.ModEntities;
+import net.evoltmael.kamenridergavvmod.entity.client.GochizoGummyRenderer;
+import net.evoltmael.kamenridergavvmod.item.ModCreativeModTabs;
+import net.evoltmael.kamenridergavvmod.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,6 +33,11 @@ public class KRGavvMod
     public KRGavvMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+
+        ModCreativeModTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -61,7 +73,7 @@ public class KRGavvMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.GOCHIZOGUMMY.get(), GochizoGummyRenderer:: new);
         }
     }
 }

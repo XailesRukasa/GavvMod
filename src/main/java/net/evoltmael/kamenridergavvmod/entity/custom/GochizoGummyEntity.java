@@ -25,7 +25,7 @@ public class GochizoGummyEntity extends Animal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new BreedGoal(this,0.25F));
+        this.goalSelector.addGoal(1, new BreedGoal(this,1.0F));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 10.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
